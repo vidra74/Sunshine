@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="pref_sync"
+        android:title="@string/pref_sync"
+        android:summary="@string/pref_sync_summ"
+        android:defaultValue="true" />
+    <EditTextPreference
+        android:key="@string/pref_loc_key"
+        android:title="@string/pref_loc_label"
+        android:summary="@string/pref_loc_default"
+        android:inputType="text"
+        android:singleLine="true"
+        android:defaultValue="Dubrovnik" />
+    <ListPreference
+        android:key="@string/pref_units"
+        android:title="@string/pref_unitsTitle"
+        android:dialogTitle="@string/pref_unitsDialogTitle"
+        android:entries="@array/units"
+        android:entryValues="@array/units"
+        android:defaultValue="@string/pref_units_default" />
+    <CheckBoxPreference
+        android:title="@string/pref_enable_notifications_label"
+        android:key="@string/pref_enable_notifications_key"
+        android:summaryOff="@string/pref_enable_notifications_false"
+        android:summaryOn="@string/pref_enable_notifications_true"
+        android:defaultValue="@string/pref_enable_notifications_default" />
+</PreferenceScreen>

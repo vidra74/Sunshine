@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Forecast fragment theme. -->
+    <style name="Forecast_Fragment_Style">
+        <item name="android:choiceMode">singleChoice</item>
+        <item name="android:drawSelectorOnTop">true</item>
+    </style>
+</resources>
