@@ -108,6 +108,29 @@ public class GetWeatherFragment extends Fragment
         super.onSaveInstanceState(outState);
     }
 
+    private void openPrefferedlocationInMap(){
+
+        // Using the URI scheme for showing a location found on a map.  This super-handy
+        // intent can is detailed in the "Common Intents" page of Android's developer site:
+        // http://developer.android.com/guide/components/intents-common.html#Maps
+        if ( null != adapterPrognoza ) {
+            Cursor c = adapterPrognoza.getCursor();
+            if (null != c) {
+                c.moveToPosition(0);
+                String posLat = c.getString(COL_COORD_LAT);
+                String posLong = c.getString(COL_COORD_LONG);
+                Uri geoLocation = Uri.parse("geo:" + posLat + "," + posLong);
+                // Uri builder = Uri.parse("geo:0,0?").buildUpon().appendQueryParameter("q", Location).build();
+
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(geoLocation);
+                if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+            }
+        }
+    }
+
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String locationSetting = Utility.getPreferredLocation(getActivity());
@@ -191,11 +214,15 @@ public class GetWeatherFragment extends Fragment
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.action_refresh:
+            //case R.id.action_refresh:
                 // Toast.makeText(getActivity(), "Smallest screen width in Dp: " + Integer.toString(getResources().getConfiguration().smallestScreenWidthDp), Toast.LENGTH_LONG).show();
-                Log.d(LOG_TAG, "onOptionsItemSelected() R.id.action_refresh updateWeatherData");
-                updateWeatherData();
+            //    Log.d(LOG_TAG, "onOptionsItemSelected() R.id.action_refresh updateWeatherData");
+            //    updateWeatherData();
+            //    return true;
+            case R.id.action_map: {
+                openPrefferedlocationInMap();
                 return true;
+            }
             default:
 
                 return super.onOptionsItemSelected(item);

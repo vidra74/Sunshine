@@ -135,13 +135,13 @@ public class MainActivity extends ActionBarActivity
             startActivity(intentSettings);
             return true;
         }
-        if (id == R.id.action_map) {
+        /* if (id == R.id.action_map) {
 
             mLocation = Utility.getPreferredLocation(this);
             Uri builder = Uri.parse("geo:0,0?").buildUpon().appendQueryParameter("q", mLocation).build();
             showMap(builder);
             return true;
-        }
+        } */
         if (id == R.id.action_download_data) {
 
             Intent intent = new Intent(this, ServiceSunshine.class);
